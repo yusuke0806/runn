@@ -142,7 +142,7 @@ func (rnr *dbRunner) Run(ctx context.Context, q *dbQuery) error {
 					case []byte:
 						s := string(v)
 						switch {
-						case strings.Contains(t, "TEXT") || strings.Contains(t, "CHAR") || t == "TIME": // MySQL8: ENUM = CHAR
+						case strings.Contains(t, "TEXT") || strings.Contains(t, "CHAR") || t == "TIME" || t == "UUID": // MySQL8: ENUM = CHAR
 							row[c] = s
 						case t == "DECIMAL" || t == "FLOAT" || t == "DOUBLE": // MySQL: NUMERIC = DECIMAL
 							num, err := strconv.ParseFloat(s, 64) //nostyle:repetition
